@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY
-# Beta v2.5
+# Beta v2.5.2
 
 import board
 import digitalio
@@ -77,8 +77,9 @@ with open('recording','w') as f:
     print("Please ensure D4 is set back to default position.")
     print("After each selection, please select D17 to continue.")
     while bof.value==0:
-        pass
+        continue
     print("Recording will begin")
+    print(" bof value:", bof.value)
     while bof.value==1:
         try:
             for b in buttons:
@@ -86,7 +87,7 @@ with open('recording','w') as f:
             buf.append(list(buttons.values()).index(0))
             print("Select D17 to continue")
             while bnx==1:
-                pass
+                continue
             print("Selection recorded")
         except:
             continue        
