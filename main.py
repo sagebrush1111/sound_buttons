@@ -82,7 +82,6 @@ with open('recording','w') as f:
                 buttons[b]=b.value
             buf.append(list(buttons.values()).index(0))
         except:
-            print("All personal should leave now!")
             continue
     json.dump(buf,f)
     buf.clear()
