@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY
-# Beta v2.5.2
+# Beta v2.6
 
 import board
 import digitalio
@@ -55,6 +55,7 @@ def play_sound(i):
         print("You fail!")
     
 buf=[]
+hold=8
 b0 = digitalio.DigitalInOut(board.D18)
 b1 = digitalio.DigitalInOut(board.D23)
 b2 = digitalio.DigitalInOut(board.D24)
@@ -73,18 +74,20 @@ print("Select D4 to start")
 while bof.value==1:
     pass
 with open('recording','w') as f:
-    print("Press D4 to stop")
     print("Please ensure D4 is set back to default position.")
     print("After each selection, please select D17 to continue.")
     while bof.value==0:
         continue
     print("Recording will begin")
-    print(" bof value:", bof.value)
+    print("Press D4 to stop")    
+    print("bof value:", bof.value)
     while bof.value==1:
         try:
             for b in buttons:
                 buttons[b]=b.value
-            buf.append(list(buttons.values()).index(0))
+            hold=list(buttons.values()).index(0))
+            if hold<8:
+                buf.append(hold)
             print("Select D17 to continue")
             while bnx==1:
                 continue
