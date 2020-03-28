@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY
-# Beta v2.4.1
+# Beta v2.5
 
 import board
 import digitalio
@@ -81,8 +81,8 @@ with open('recording','w') as f:
     print("Recording will begin")
     while bof.value==1:
         try:
-            #for b in buttons:
-            buttons[b0:b7]=b.value
+            for b in buttons:
+                buttons[b]=b.value
             buf.append(list(buttons.values()).index(0))
             print("Select D17 to continue")
             while bnx==1:
