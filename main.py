@@ -1,7 +1,8 @@
 # Audio play based on button input
 # Released under GNU Public License v3
+# Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY
-# Alpha 270320-14
+# Beta v1
 
 import board
 import digitalio
@@ -62,7 +63,7 @@ b4 = digitalio.DigitalInOut(board.D21)
 b5 = digitalio.DigitalInOut(board.D16)
 b6 = digitalio.DigitalInOut(board.D20)
 b7 = digitalio.DigitalInOut(board.D21)
-bof = digitalio.DigitalInOut(board.D8) #Need to settle on gpio port
+bof = digitalio.DigitalInOut(board.D4)
 buttons = {b0:1,b1:1,b2:1,b3:1,b4:1,b5:1,b6:1,b7:1,bof:1}
 for b in buttons:
     b.direction = digitalio.Direction.INPUT
@@ -71,7 +72,7 @@ while bof.value==1:
     pass
 with open('recording','w') as f:
     print("Recording will begin")
-    print("Press <insert pin> to stop")
+    print("Press D4 to stop")
     while bof.value==1:
         try:
             for b in buttons:
