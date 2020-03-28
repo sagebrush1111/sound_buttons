@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY
-# Beta v2.6.1
+# Beta v2.7
 
 import board
 import digitalio
@@ -71,8 +71,6 @@ for b in buttons:
     b.direction = digitalio.Direction.INPUT
     b.pull=digitalio.Pull.UP
 print("Select D4 to start")
-while bof.value==1:
-    pass
 with open('recording','w') as f:
     print("Please ensure D4 is set back to default position.")
     print("After each selection, please select D17 to continue.")
