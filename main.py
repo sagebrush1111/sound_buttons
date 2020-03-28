@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY
-# Beta v2.6
+# Beta v2.7
 
 import board
 import digitalio
@@ -70,24 +70,20 @@ buttons = {b0:1,b1:1,b2:1,b3:1,b4:1,b5:1,b6:1,b7:1,bof:1,bnx:1}
 for b in buttons:
     b.direction = digitalio.Direction.INPUT
     b.pull=digitalio.Pull.UP
-print("Select D4 to start")
 with open('recording','w') as f:
-    print("Please ensure D4 is set back to default position.")
+    print("Select D4 to stop.")    
+    print("Recording will begin.")
     print("After each selection, please select D17 to continue.")
-    while bof.value==0:
-        continue
-    print("Recording will begin")
-    print("Press D4 to stop")    
-    print("bof value:", bof.value)
     while bof.value==1:
         try:
             for b in buttons:
                 buttons[b]=b.value
             hold=list(buttons.values().index(0))
-            if hold<8:
-                buf.append(hold)
+            if hold>7:
+                raise Exception('Non-musical button caught')
+            buf.append(hold)
             print("Select D17 to continue")
-            while bnx==1:
+            while bnx.value==1:
                 continue
             print("Selection recorded")
         except:
