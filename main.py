@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY
-# Beta v2
+# Beta v2.1
 
 import board
 import digitalio
@@ -72,21 +72,23 @@ for b in buttons:
 while bof.value==1:
     pass
 with open('recording','w') as f:
-    print("Recording will begin")
-    print("Press D4 to stop")
+    print("Press D4 to start or stop")
     print("Please ensure D4 is set back to default position.")
     print("After each selection, please select D17 to continue.")
     while bof.value==0:
         pass
+    print("Recording will begin")
     while bof.value==1:
         try:
             for b in buttons:
                 buttons[b]=b.value
             buf.append(list(buttons.values()).index(0))
+            print("Select D17 to continue")
         except:
             continue
         while bnx==1:
             pass
+        print("Selection recorded")
     json.dump(buf,f)
     buf.clear()
 if not f.closed:
