@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY
-# Beta v1
+# Beta v1.1
 
 import board
 import digitalio
@@ -73,6 +73,9 @@ while bof.value==1:
 with open('recording','w') as f:
     print("Recording will begin")
     print("Press D4 to stop")
+    print("Please ensure D4 is set back to default position.")
+    while bof.value==0:
+        pass
     while bof.value==1:
         try:
             for b in buttons:
@@ -80,7 +83,7 @@ with open('recording','w') as f:
             buf.append(list(buttons.values()).index(0))
         except:
             print("All personal should leave now!")
-            continue 
+            continue
     json.dump(buf,f)
     buf.clear()
 if not f.closed:
