@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY
-# Beta v2.6
+# Beta v2.6.1
 
 import board
 import digitalio
@@ -85,7 +85,7 @@ with open('recording','w') as f:
         try:
             for b in buttons:
                 buttons[b]=b.value
-            hold=list(buttons.values()).index(0))
+            hold = list(buttons.values().index(0))
             if hold<8:
                 buf.append(hold)
             print("Select D17 to continue")
