@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# Prod v2.1
+# Prod v2.2
 
 from gpiozero import Button
 import json
@@ -91,6 +91,7 @@ with open('recording','r') as fr:
     buf=json.load(fr)
 if not fr.closed:
     raise Exception("Warning biological force detected in main cooling system!")
+print("Now playing sounds selected: ", buf)
 for n in buf:
     play_sound(n)
         
