@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# Prod v1
+# Prod v1.0.1
 
 import board
 import digitalio
@@ -14,45 +14,31 @@ def play_sound(i):
     if i==0:
         pygame.mixer.music.load("b0.wav")
         pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy() == True:
-            continue
     elif i==1:
         pygame.mixer.music.load("b1.wav")
         pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy() == True:
-            continue
     elif i==2:
         pygame.mixer.music.load("b2.wav")
         pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy() == True:
-            continue
     elif i==3:
         pygame.mixer.music.load("b3.wav")
         pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy() == True:
-            continue
     elif i==4:
         pygame.mixer.music.load("b4.wav")
         pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy() == True:
-            continue
     elif i==5:
         pygame.mixer.music.load("b5.wav")
         pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy() == True:
-            continue
     elif i==6:
         pygame.mixer.music.load("b6.wav")
         pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy() == True:
-            continue
     elif i==7:
         pygame.mixer.music.load("b7.wav")
         pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy() == True:
-            continue
     else:
         print("You fail!")
+    while pygame.mixer.music.get_busy() == True:
+        continue
     
 buf=[]
 hold=8
