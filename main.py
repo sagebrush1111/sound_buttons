@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# IOFaster Beta v1.3
+# IOFaster Beta v1.4
 
 from gpiozero import Button
 import json
@@ -12,28 +12,28 @@ buf=[]
 
 def play_sound(i):
     pygame.mixer.init()
-    if i==b0:
+    if i==0:
         pygame.mixer.music.load("b0.wav")
         pygame.mixer.music.play()
-    elif i==b1:
+    elif i==1:
         pygame.mixer.music.load("b1.wav")
         pygame.mixer.music.play()
-    elif i==b2:
+    elif i==2:
         pygame.mixer.music.load("b2.wav")
         pygame.mixer.music.play()
-    elif i==b3:
+    elif i==3:
         pygame.mixer.music.load("b3.wav")
         pygame.mixer.music.play()
-    elif i==b4:
+    elif i==4:
         pygame.mixer.music.load("b4.wav")
         pygame.mixer.music.play()
-    elif i==b5:
+    elif i==5:
         pygame.mixer.music.load("b5.wav")
         pygame.mixer.music.play()
-    elif i==b6:
+    elif i==6:
         pygame.mixer.music.load("b6.wav")
         pygame.mixer.music.play()
-    elif i==b7:
+    elif i==7:
         pygame.mixer.music.load("b7.wav")
         pygame.mixer.music.play()
     else:
@@ -42,9 +42,23 @@ def play_sound(i):
         continue
     
 def record_button(b):
-    print(b)
-    buf.append(b)
-    
+    if b.pin==18:
+        buf.append(0)
+    else if b.pin==23:
+        buf.append(1)
+    else if b.pin==24:
+        buf.append(2)
+    else if b.pin==25:
+        buf.append(3)
+    else if b.pin==12:
+        buf.append(4)
+    else if b.pin==16:
+        buf.append(5)
+    else if b.pin==20:
+        buf.append(6)
+    else if b.pin==21:
+        buf.append(7)
+
 b0 = Button(18)
 b1 = Button(23)
 b2 = Button(24)
