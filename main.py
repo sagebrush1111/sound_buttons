@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# IOFaster Beta v1.1
+# IOFaster Beta v1.1.1
 
 from gpiozero import Button
 import json
@@ -61,7 +61,7 @@ print("Recording will begin.")
 with open('recording', 'r') as f:
     while bof.value==1:
         continue
-json.dump(buf,f)
+    json.dump(buf,f)
 buf.clear()
 if not f.closed:
     raise Exception('Cross-dimensional power field detected in main reactor core!')
