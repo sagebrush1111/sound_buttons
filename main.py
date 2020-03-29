@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY
-# Beta v2.7
+# Beta v2.7.2
 
 import board
 import digitalio
@@ -78,7 +78,7 @@ with open('recording','w') as f:
         try:
             for b in buttons:
                 buttons[b]=b.value
-            hold=list(buttons.values().index(0))
+            hold=list(buttons.values()).index(0)
             if hold>7:
                 raise Exception('Non-musical button caught')
             buf.append(hold)
