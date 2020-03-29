@@ -1,8 +1,8 @@
 # Audio play based on button input
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
-# Absolutely No WARRANTY
-# Beta v2.7.2
+# Absolutely No WARRANTY Expressed or Implied
+# Prod v1
 
 import board
 import digitalio
