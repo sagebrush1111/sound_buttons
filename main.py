@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# IOFaster Beta v1.8
+# IOFaster Prod v1
 
 from gpiozero import Button
 import json
@@ -89,7 +89,6 @@ with open('recording','r') as fr:
     buf=json.load(fr)
 if not fr.closed:
     raise Exception("Warning biological force detected in main cooling system!")
-print(buf)
 for n in buf:
     play_sound(n)
         
