@@ -45,27 +45,35 @@ def record_button(b):
     if b.pin.number==18:
         buf.append(0)
         print("Pin selected: 0")
+        play_sound(0)
     elif b.pin.number==23:
         buf.append(1)
         print("Pin selected: 1")
+        play_sound(1)
     elif b.pin.number==24:
         buf.append(2)
         print("Pin selected: 2")
+        play_sound(2)
     elif b.pin.number==25:
         buf.append(3)
         print("Pin selected: 3")
+        play_sound(3)
     elif b.pin.number==12:
         buf.append(4)
         print("Pin selected: 4")
+        play_sound(4)
     elif b.pin.number==16:
         buf.append(5)
         print("Pin selected: 5")
+        play_sound(5)
     elif b.pin.number==20:
         buf.append(6)
         print("Pin selected: 6")
+        play_sound(6)
     elif b.pin.number==21:
         buf.append(7)
         print("Pin selected: 7")
+        play_sound(7)
     else:
         pass
 
