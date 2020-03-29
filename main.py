@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# IOFaster Beta v1.2
+# IOFaster Beta v1.3
 
 from gpiozero import Button
 import json
@@ -12,28 +12,28 @@ buf=[]
 
 def play_sound(i):
     pygame.mixer.init()
-    if i=='b0':
+    if i==b0:
         pygame.mixer.music.load("b0.wav")
         pygame.mixer.music.play()
-    elif i=='b1':
+    elif i==b1:
         pygame.mixer.music.load("b1.wav")
         pygame.mixer.music.play()
-    elif i=='b2':
+    elif i==b2:
         pygame.mixer.music.load("b2.wav")
         pygame.mixer.music.play()
-    elif i=='b3':
+    elif i==b3:
         pygame.mixer.music.load("b3.wav")
         pygame.mixer.music.play()
-    elif i=='b4':
+    elif i==b4:
         pygame.mixer.music.load("b4.wav")
         pygame.mixer.music.play()
-    elif i=='b5':
+    elif i==b5:
         pygame.mixer.music.load("b5.wav")
         pygame.mixer.music.play()
-    elif i=='b6':
+    elif i==b6:
         pygame.mixer.music.load("b6.wav")
         pygame.mixer.music.play()
-    elif i=='b7':
+    elif i==b7:
         pygame.mixer.music.load("b7.wav")
         pygame.mixer.music.play()
     else:
@@ -66,7 +66,7 @@ with open('recording', 'r') as f:
         json.dump(buf,f)
     except:
         buf.append("I don't know that!")
-        json.dumo(buf, f)
+        json.dump(buf, f)
 buf.clear()
 if not f.closed:
     raise Exception('Cross-dimensional power field detected in main reactor core!')
