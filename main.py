@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# IOFaster Beta v1.4
+# IOFaster Beta v1.4.1
 
 from gpiozero import Button
 import json
@@ -44,21 +44,22 @@ def play_sound(i):
 def record_button(b):
     if b.pin==18:
         buf.append(0)
-    else if b.pin==23:
+    elif b.pin==23:
         buf.append(1)
-    else if b.pin==24:
+    elif b.pin==24:
         buf.append(2)
-    else if b.pin==25:
+    elif b.pin==25:
         buf.append(3)
-    else if b.pin==12:
+    elif b.pin==12:
         buf.append(4)
-    else if b.pin==16:
+    elif b.pin==16:
         buf.append(5)
-    else if b.pin==20:
+    elif b.pin==20:
         buf.append(6)
-    else if b.pin==21:
+    elif b.pin==21:
         buf.append(7)
-
+    else:
+        pass
 b0 = Button(18)
 b1 = Button(23)
 b2 = Button(24)
