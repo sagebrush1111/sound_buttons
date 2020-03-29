@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# IOFaster Beta v1.6
+# IOFaster Beta v1.8
 
 from gpiozero import Button
 import json
@@ -42,22 +42,21 @@ def play_sound(i):
         continue
     
 def record_button(b):
-    print(b.pin)
-    if b.pin=='GPIO18':
+    if b.pin.number==18:
         buf.append(0)
-    elif b.pin=='GPIO23':
+    elif b.pin.number==23:
         buf.append(1)
-    elif b.pin=='GPIO24':
+    elif b.pin.number==24:
         buf.append(2)
-    elif b.pin=='GPIO25':
+    elif b.pin.number==25:
         buf.append(3)
-    elif b.pin=='GPIO12':
+    elif b.pin.number==12:
         buf.append(4)
-    elif b.pin=='GPIO16':
+    elif b.pin.number==16:
         buf.append(5)
-    elif b.pin=='GPIO20':
+    elif b.pin.number==20:
         buf.append(6)
-    elif b.pin=='GPIO21':
+    elif b.pin.number==21:
         buf.append(7)
     else:
         pass
@@ -70,7 +69,7 @@ b5 = Button(16)
 b6 = Button(20)
 b7 = Button(21)
 bof = Button(4)
-buttons = {b0:1,b1:1,b2:1,b3:1,b4:1,b5:1,b6:1,b7:1}
+buttons = [b0,b1,b2,b3,b4,b5,b6,b7]
 for b in buttons:
     b.when_pressed=record_button
 print("Select D4 to stop.")    
