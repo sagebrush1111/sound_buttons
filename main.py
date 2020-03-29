@@ -2,8 +2,10 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# Prod v2.4
+# Prod v2.5
 
+from os import environ
+environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from gpiozero import Button
 import json
 import pygame
