@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# IOFaster Prod v1
+# Prod v2.1
 
 from gpiozero import Button
 import json
@@ -37,7 +37,7 @@ def play_sound(i):
         pygame.mixer.music.load("b7.wav")
         pygame.mixer.music.play()
     else:
-        print("You fail!")
+        print("Not valid pin")
     while pygame.mixer.music.get_busy() == True:
         continue
     
@@ -60,6 +60,8 @@ def record_button(b):
         buf.append(7)
     else:
         pass
+    print("Pin selected: ", b.pin.number)
+
 b0 = Button(18)
 b1 = Button(23)
 b2 = Button(24)
