@@ -1,4 +1,4 @@
-pygame
+pygame>=1.9.5
 gpiozero
 json
 os
