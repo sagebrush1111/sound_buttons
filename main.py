@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# IOFaster Beta v1.1.1
+# IOFaster Beta v1.2
 
 from gpiozero import Button
 import json
@@ -42,6 +42,7 @@ def play_sound(i):
         continue
     
 def record_button(b):
+    print(b)
     buf.append(b)
     
 b0 = Button(18)
@@ -59,9 +60,13 @@ for b in buttons:
 print("Select D4 to stop.")    
 print("Recording will begin.")
 with open('recording', 'r') as f:
-    while bof.value==1:
+    while bof.value==0:
         continue
-    json.dump(buf,f)
+    try:
+        json.dump(buf,f)
+    except:
+        buf.append("I don't know that!")
+        json.dumo(buf, f)
 buf.clear()
 if not f.closed:
     raise Exception('Cross-dimensional power field detected in main reactor core!')
