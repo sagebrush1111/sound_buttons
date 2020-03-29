@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# IOFaster Beta v1.4.1
+# IOFaster Beta v1.5
 
 from gpiozero import Button
 import json
@@ -74,13 +74,13 @@ for b in buttons:
     b.when_pressed=record_button
 print("Select D4 to stop.")    
 print("Recording will begin.")
-with open('recording', 'r') as f:
+with open('recording', 'w') as f:
     while bof.value==0:
         continue
     try:
         json.dump(buf,f)
     except:
-        buf.append("I don't know that!")
+        buf.append(99)
         json.dump(buf, f)
 buf.clear()
 if not f.closed:
