@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# Prod v2.2
+# Prod v2.3
 
 from gpiozero import Button
 import json
@@ -44,23 +44,30 @@ def play_sound(i):
 def record_button(b):
     if b.pin.number==18:
         buf.append(0)
+        print("Pin selected: 0")
     elif b.pin.number==23:
         buf.append(1)
+        print("Pin selected: 1")
     elif b.pin.number==24:
         buf.append(2)
+        print("Pin selected: 2")
     elif b.pin.number==25:
         buf.append(3)
+        print("Pin selected: 3")
     elif b.pin.number==12:
         buf.append(4)
+        print("Pin selected: 4")
     elif b.pin.number==16:
         buf.append(5)
+        print("Pin selected: 5")
     elif b.pin.number==20:
         buf.append(6)
+        print("Pin selected: 6")
     elif b.pin.number==21:
         buf.append(7)
+        print("Pin selected: 7")
     else:
         pass
-    print("Pin selected: ", b.pin.number)
 
 b0 = Button(18)
 b1 = Button(23)
