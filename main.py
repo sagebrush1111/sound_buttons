@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# IOFaster Beta v1
+# IOFaster Beta v1.1
 
 from gpiozero import Button
 import json
@@ -48,7 +48,7 @@ b0 = Button(18)
 b1 = Button(23)
 b2 = Button(24)
 b3 = Button(25)
-b4 = Button(21)
+b4 = Button(12)
 b5 = Button(16)
 b6 = Button(20)
 b7 = Button(21)
