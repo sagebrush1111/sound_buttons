@@ -13,7 +13,7 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# Prod v3.1.2
+# Prod v3.2
 
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
@@ -25,7 +25,7 @@ buf=[]
 pinselect=[]
 
 def play_sound(b):
-    pygame.mixer.music.load(sound_map[b])
+    pygame.mixer.music.load("sound/"+sound_map[b])
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy() == True:
         continue
