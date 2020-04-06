@@ -2,18 +2,18 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# Prod v3
+# Prod v3.0.1
 
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from gpiozero import Button
 import pygame
+pygame.mixer.init()
 
 buf=[]
 pinselect=[]
 
 def play_sound(b):
-    pygame.mixer.init()
     pygame.mixer.music.load(sound_map[b])
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy() == True:
