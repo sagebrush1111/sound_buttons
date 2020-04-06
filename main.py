@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# Beta v3b
+# Prod v3
 
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
@@ -41,9 +41,8 @@ print("Select D4 to stop.")
 print("Recording will begin.")
 while bof.value==0:
     continue
-i=0
 for o in buf:
-    pinselect[i++]=buttons[buf]
+    pinselect.append(buttons[o])    
 print("Now playing sounds selected: ", pinselect)
 for n in buf:
     play_sound(n)
