@@ -2,15 +2,15 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# Beta v3
+# Beta v3b
 
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from gpiozero import Button
-import json
 import pygame
 
 buf=[]
+pinselect=[]
 
 def play_sound(b):
     pygame.mixer.init()
@@ -20,7 +20,7 @@ def play_sound(b):
         continue
     
 def record_button(b):
-    buf.append(buttons[b]);
+    buf.append(b);
     print("Pin selected: ", buttons[b]);
     play_sound(b);
 
@@ -39,22 +39,12 @@ for b in buttons:
     b.when_pressed=record_button
 print("Select D4 to stop.")    
 print("Recording will begin.")
-with open('recording', 'w') as f:
-    while bof.value==0:
-        continue
-    try:
-        json.dump(buf,f)
-    except:
-        buf.append(99)
-        json.dump(buf, f)
-buf.clear()
-if not f.closed:
-    raise Exception('Cross-dimensional power field detected in main reactor core!')
-with open('recording','r') as fr:
-    buf=json.load(fr)
-if not fr.closed:
-    raise Exception("Warning biological force detected in main cooling system!")
-print("Now playing sounds selected: ", buf)
+while bof.value==0:
+    continue
+i=0
+for o in buf:
+    pinselect[i++]=buttons[buf]
+print("Now playing sounds selected: ", pinselect)
 for n in buf:
     play_sound(n)
         
