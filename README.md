@@ -1,4 +1,4 @@
-A python program for playing sounds based on button input on Raspberry Pis. It has been tested on the Raspberry Pi 4, but should work with other Pis too. 
+A Python program for playing sounds based on button input on Raspberry Pis. It has been tested on the Raspberry Pi 4, but should work with other Pis too. 
 
 The program will play sounds as input occurs, and then play it back at the end of program in order of input. Eight sound files are already provided.
 
