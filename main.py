@@ -13,7 +13,7 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# Prod v3.1
+# Prod v3.1.2
 
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
@@ -48,10 +48,7 @@ buttons = {b0:18,b1:23,b2:24,b3:25,b4:12,b5:16,b6:20,b7:21}
 sound_map={b0:"b0.wav",b1:"b1.wav",b2:"b2.wav",b3:"b3.wav",b4:"b4.wav",b5:"b5.wav",b6:"b6.wav",b7:"b7.wav"}
 for b in buttons:
     b.when_pressed=record_button
-print(" Sound Buttons Copyright (C) 2020 sagebrush1111\n
-    This program comes with ABSOLUTELY NO WARRANTY; for details, see the LICENSE file with the repo'.\n
-    This is free software, and you are welcome to redistribute it\n
-    under certain conditions; see the LICENSE file with repo for details.")
+print("Sound Buttons Copyright (C) 2020 sagebrush1111\nThis program comes with ABSOLUTELY NO WARRANTY; for details, see the LICENSE file with the repo.\nThis is free software, and you are welcome to redistribute it\nunder certain conditions; see the LICENSE file with repo for details.")
 print("Select D4 to stop.")    
 print("Recording will begin.")
 while bof.value==0:
