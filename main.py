@@ -2,7 +2,7 @@
 # Released under GNU Public License v3
 # Copyright 2020 sagebrush1111
 # Absolutely No WARRANTY Expressed or Implied
-# Prod v3.0.1
+# Prod v3.0.1b
 
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
