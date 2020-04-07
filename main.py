@@ -16,20 +16,32 @@
 # Prod v3.2
 
 from os import environ
-environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
-from gpiozero import Button
-import pygame
+environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' #Needed to suppress welcome to pygame print
+from gpiozero import Button #GPIO interaction library
+import pygame                #Music playing library
 pygame.mixer.init()
 
 buf=[]
 pinselect=[]
 
-def play_sound(b):
-    pygame.mixer.music.load("sound/"+sound_map[b])
+#play_sound function
+#Plays music based on mutton input
+#Takes button object argument
+#Uses which button pressed to play corresponding sound
+#Returns nothing to caller
+
+def play_sound(b):                              
+    pygame.mixer.music.load("sound/"+sound_map[b]) #Pulls in a dictionary to find the sound mapping to each button
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy() == True:
         continue
-    
+        
+#record_button function
+#Records which button was pressed
+#Takes button object argument
+#Records the button pressed, informed the user which one, and provides auditory feedback
+#Returns nothing to caller
+
 def record_button(b):
     buf.append(b);
     print("Pin selected: ", buttons[b]);
@@ -44,18 +56,25 @@ b5 = Button(16)
 b6 = Button(20)
 b7 = Button(21)
 bof = Button(4)
+
+#The dictionaries below map each button object to the corresponding GPIO pin or sound file
+#so the user knows what pin they hit and play the correct sound file
+
 buttons = {b0:18,b1:23,b2:24,b3:25,b4:12,b5:16,b6:20,b7:21}
 sound_map={b0:"b0.wav",b1:"b1.wav",b2:"b2.wav",b3:"b3.wav",b4:"b4.wav",b5:"b5.wav",b6:"b6.wav",b7:"b7.wav"}
+
+#Set up the function that is called when the buttons are pressed
 for b in buttons:
     b.when_pressed=record_button
+    
 print("Sound Buttons Copyright (C) 2020 sagebrush1111\nThis program comes with ABSOLUTELY NO WARRANTY; for details, see the LICENSE file with the repo.\nThis is free software, and you are welcome to redistribute it\nunder certain conditions; see the LICENSE file with repo for details.")
 print("Select D4 to stop.")    
 print("Recording will begin.")
-while bof.value==0:
+while bof.value==0: #Loop until off pin activated to move to playback
     continue
-for o in buf:
+for o in buf:  #Creating human readable list of buttons pressed, so they know what is being played
     pinselect.append(buttons[o])    
 print("Now playing sounds selected: ", pinselect)
-for n in buf:
+for n in buf:              #Play recorded melody back
     play_sound(n)
         
