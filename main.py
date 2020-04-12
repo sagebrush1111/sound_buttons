@@ -13,7 +13,7 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# Beta 4h
+# Beta 4n
 
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' #Needed to suppress welcome to pygame print
@@ -22,8 +22,23 @@ import pygame                #Music playing library
 import json                  #Storage system
 pygame.mixer.init()
 
+arerecord = bool()
 buf=[]
 pinselect=[]
+b0 = Button(18)
+b1 = Button(23)
+b2 = Button(24)
+b3 = Button(25)
+b4 = Button(12)
+b5 = Button(16)
+b6 = Button(20)
+b7 = Button(21)
+bof = Button(4)
+    
+#The dictionaries below map each button object to the corresponding GPIO pin or sound file
+#so the user knows what pin they hit and play the correct sound file
+buttons = {b0:18,b1:23,b2:24,b3:25,b4:12,b5:16,b6:20,b7:21}
+sound_map={18:"b0.wav",23:"b1.wav",24:"b2.wav",25:"b3.wav",12:"b4.wav",16:"b5.wav",20:"b6.wav",21:"b7.wav"}
 
 #play_sound function
 #Plays music based on mutton input
@@ -44,23 +59,13 @@ def play_sound(b):
 #Returns nothing to caller
 
 def record_button(b):
+    if not arerecord:
+        raise Exception("Invalid operation during nonrecord mode. Exiting...")
     buf.append(b);
     print("Pin selected: ", buttons[b]);
     play_sound(b);
 
 def record():
-    b0 = Button(18)
-    b1 = Button(23)
-    b2 = Button(24)
-    b3 = Button(25)
-    b4 = Button(12)
-    b5 = Button(16)
-    b6 = Button(20)
-    b7 = Button(21)
-    bof = Button(4)
-    buttons = {b0:18,b1:23,b2:24,b3:25,b4:12,b5:16,b6:20,b7:21}
-    for b in buttons:
-        b.when_pressed=record_button
     print("Select D4 to stop.")    
     print("Recording will begin.")
     while bof.value==0: #Loop until off pin activated to move to playback
@@ -89,14 +94,14 @@ def playback():
     for n in buf:              #Play recorded melody back
         play_sound(n)
     exit()
-        
-#The dictionaries below map each button object to the corresponding GPIO pin or sound file
-#so the user knows what pin they hit and play the correct sound file
-    
+
 print("Sound Buttons Copyright (C) 2020 sagebrush1111\nThis program comes with ABSOLUTELY NO WARRANTY; for details, see the LICENSE file with the repo.\nThis is free software, and you are welcome to redistribute it\nunder certain conditions; see the LICENSE file with repo for details.")
-sound_map={18:"b0.wav",23:"b1.wav",24:"b2.wav",25:"b3.wav",12:"b4.wav",16:"b5.wav",20:"b6.wav",21:"b7.wav"}
+for b in buttons:
+    b.when_pressed=record_button
+    
 select=input("Select option from 1-Record, 2-Playback, 3-Exit: ")
 if select=='1':
+    arerecord=bool(1)
     record()
 elif select=='2':
     playback()
