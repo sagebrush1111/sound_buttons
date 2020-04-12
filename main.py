@@ -13,7 +13,7 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# RC 4-1
+# RC 4-2
 
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' #Needed to suppress welcome to pygame print
@@ -63,10 +63,16 @@ def play_sound(b,which_dict):
 
 def record_button(b):
     if not arerecord:
-        raise Exception("Invalid operation during nonrecord mode. Exiting...")
+        raise Exception("Invalid operation during a nonrecord mode. Exiting...")
     buf.append(b);
     print("Pin selected: ", buttons[b]);
     play_sound(b,'b');
+
+#Record function
+#Runs when the user wants to record music
+#Takes no arguments
+#Runs the recording and saving system
+#Returns nothing to caller
 
 def record():
     print("Select D4 to stop.")    
@@ -86,6 +92,12 @@ def record():
     else:
         exit()
 
+#Playback function
+#Runs when user wants to hear playback of melody they created
+#Takes no arguments
+#Runs the playback system
+#Returns nothing to caller
+
 def playback():
     with open("recording","r") as fr:
         buf=json.load(fr)
@@ -99,15 +111,14 @@ def playback():
 print("Sound Buttons Copyright (C) 2020 sagebrush1111\nThis program comes with ABSOLUTELY NO WARRANTY; for details, see the LICENSE file with the repo.\nThis is free software, and you are welcome to redistribute it\nunder certain conditions; see the LICENSE file with repo for details.")
 for b in buttons:
     b.when_pressed=record_button
-    
-select=input("Select option from 1-Record, 2-Playback, 3-Exit: ")
-if select=='1':
+
+while(1) { #Infinite while loop until exit
+        select=input("Select option from (R)ecord, (P)layback, or (E)xit:(E)  ") #Option list to select record, play, or exit
+if select=='R' or select=='r':
     arerecord=bool(1)
     record()
-elif select=='2':
+elif select=='P' or select =='p':
     playback()
-elif select=='3':
-    exit()
 else:
-    raise Exception("No valid option selected. Exiting...")
-exit
+    exit()    
+}
