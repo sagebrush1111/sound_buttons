@@ -13,7 +13,7 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# RC 4-3
+# Prod v4
 
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' #Needed to suppress welcome to pygame print
@@ -75,7 +75,7 @@ def record_button(b):
 #Returns nothing to caller
 
 def record():
-    print("Select D4 to stop.")    
+    print("Select 4 to stop.")    
     print("Recording will begin.")
     while bof.value==0: #Loop until off pin activated to move to playback
         continue
@@ -85,9 +85,6 @@ def record():
         json.dump(pinselect, fw)
     if not fw.closed:
         raise Exception("Warning biological force detected in main cooling system!")
-    select=input("Do you want to (e)xit or (p)layback? (e)")
-    if select=='p':
-        playback()
 
 #Playback function
 #Runs when user wants to hear playback of melody they created
