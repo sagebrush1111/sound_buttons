@@ -1,2 +1,2 @@
-pygame>=1.9.5
-gpiozero
+pygame>=1.9.6
+gpiozero>=1.5.1
