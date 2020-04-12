@@ -13,7 +13,7 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# RC 4-2
+# RC 4-2b
 
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' #Needed to suppress welcome to pygame print
@@ -112,13 +112,12 @@ print("Sound Buttons Copyright (C) 2020 sagebrush1111\nThis program comes with A
 for b in buttons:
     b.when_pressed=record_button
 
-while(1) { #Infinite while loop until exit
-        select=input("Select option from (R)ecord, (P)layback, or (E)xit:(E)  ") #Option list to select record, play, or exit
-if select=='R' or select=='r':
-    arerecord=bool(1)
-    record()
-elif select=='P' or select =='p':
-    playback()
-else:
-    exit()    
-}
+while(1): #Infinite while loop until exit
+    select=input("Select option from (R)ecord, (P)layback, or (E)xit:(E)  ") #Option list to select record, play, or exit
+    if select=='R' or select=='r':
+        arerecord=bool(1)
+        record()
+    elif select=='P' or select =='p':
+        playback()
+    else:
+        exit()    
