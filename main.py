@@ -13,7 +13,7 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# Beta 4n
+# RC 4-1
 
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' #Needed to suppress welcome to pygame print
@@ -38,16 +38,19 @@ bof = Button(4)
 #The dictionaries below map each button object to the corresponding GPIO pin or sound file
 #so the user knows what pin they hit and play the correct sound file
 buttons = {b0:18,b1:23,b2:24,b3:25,b4:12,b5:16,b6:20,b7:21}
-sound_map={18:"b0.wav",23:"b1.wav",24:"b2.wav",25:"b3.wav",12:"b4.wav",16:"b5.wav",20:"b6.wav",21:"b7.wav"}
-
+sound_mapb={b0:"b0.wav",b1:"b1.wav",b2:"b2.wav",b3:"b3.wav",b4:"b4.wav",b5:"b5.wav",b6:"b6.wav",b7:"b7.wav"}
+sound_mapp={18:"b0.wav",23:"b1.wav",24:"b2.wav",25:"b3.wav",12:"b4.wav",16:"b5.wav",20:"b6.wav",21:"b7.wav"}
 #play_sound function
 #Plays music based on mutton input
 #Takes button object argument
 #Uses which button pressed to play corresponding sound
 #Returns nothing to caller
 
-def play_sound(b):                              
-    pygame.mixer.music.load("sound/"+sound_map[b]) #Pulls in a dictionary to find the sound mapping to each button
+def play_sound(b,which_dict):
+    if which_dict=='b':
+        pygame.mixer.music.load("sound/"+sound_mapb[b]) #Pulls in a dictionary to find the sound mapping to each button
+    elif which_dict=='p':
+        pygame.mixer.music.load("sound/"+sound_mapp[b]) #Pulls in a dictionary to find the sound mapping to each button
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy() == True:
         continue
@@ -63,7 +66,7 @@ def record_button(b):
         raise Exception("Invalid operation during nonrecord mode. Exiting...")
     buf.append(b);
     print("Pin selected: ", buttons[b]);
-    play_sound(b);
+    play_sound(b,'b');
 
 def record():
     print("Select D4 to stop.")    
@@ -77,22 +80,20 @@ def record():
     if not fw.closed:
         raise Exception("Warning biological force detected in main cooling system!")
     select=input("Do you want to (e)xit or (p)layback? (e)")
-    if select=='e':
-        exit()
-    elif select=='p':
+    if select=='p':
         playback()
         exit()
     else:
-        raise Exception("No valid option selected. Exiting...")
+        exit()
 
 def playback():
     with open("recording","r") as fr:
         buf=json.load(fr)
     if not fr.closed:
         raise Exception("Warning! Cross-dimensional power field detected in main reactor core!")
-    print("Now playing sounds selected: ", pinselect)
+    print("Now playing sounds selected: ", buf)
     for n in buf:              #Play recorded melody back
-        play_sound(n)
+        play_sound(n,'p')
     exit()
 
 print("Sound Buttons Copyright (C) 2020 sagebrush1111\nThis program comes with ABSOLUTELY NO WARRANTY; for details, see the LICENSE file with the repo.\nThis is free software, and you are welcome to redistribute it\nunder certain conditions; see the LICENSE file with repo for details.")
@@ -109,3 +110,4 @@ elif select=='3':
     exit()
 else:
     raise Exception("No valid option selected. Exiting...")
+exit
