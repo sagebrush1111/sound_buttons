@@ -13,7 +13,7 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# RC 4-2b
+# RC 4-3
 
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1' #Needed to suppress welcome to pygame print
@@ -88,9 +88,6 @@ def record():
     select=input("Do you want to (e)xit or (p)layback? (e)")
     if select=='p':
         playback()
-        exit()
-    else:
-        exit()
 
 #Playback function
 #Runs when user wants to hear playback of melody they created
@@ -106,7 +103,6 @@ def playback():
     print("Now playing sounds selected: ", buf)
     for n in buf:              #Play recorded melody back
         play_sound(n,'p')
-    exit()
 
 print("Sound Buttons Copyright (C) 2020 sagebrush1111\nThis program comes with ABSOLUTELY NO WARRANTY; for details, see the LICENSE file with the repo.\nThis is free software, and you are welcome to redistribute it\nunder certain conditions; see the LICENSE file with repo for details.")
 for b in buttons:
